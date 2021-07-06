@@ -1,0 +1,56 @@
+#!/bin/bash  # Interpretador shell                                                             inicio do código
+var=$(ls -ld $1) # $1 é o primeiro argumento enviado para o script                    váriavel do código 
+tam=${var:0:1} # cortar a minha string / ${nomevariavel:inicio:fim}                        
+if [ $tam = 'd' ]                                                                    
+then                                                 então
+        echo "é diretório"                           escrita
+else                                                 se não
+        echo "é arquivo"                             outra alternativa de escirta
+fi                                                   fechamento do if
+__ 
+LOOP:
+#!/bin/bash # Interpretador shell
+teste=0                                             teste = 0
+for i in $( ls )                                    para i em $(listar arquivos)
+do                                                  faça
+        if [ $i == $1 ]                             se $i for igual a $1     
+        then                                        então
+                teste=1                             resultado de teste será um
+                echo "Aquivo já existe"             escrita de arquivo existente
+        fi                                          fechamento do if  
+done                                                feito
+ 
+if [ $teste -eq 0 ]                                 se teste for menor que 0
+then                                                então
+        echo "Criando arquivo $1"                   escrita
+        touch $1                                    cria arquivo $1
+fi                                                  fechamento de if
+__
+VETOR:
+#!/bin/bash # Interpretador shell
+var=$(ls)                                                  lista o arquivo
+var1=${var/$1} # $1 é o primeiro argumento enviado para o script      
+if [[ $var != $var1 ]]                                     se a váriavel for diferente de var1
+then                                                       então
+    echo "O arquivo existe"                                escrita
+else                                                       se não
+    echo "Criando o arquivo $1 ..."                        escrita
+    touch $1                                               criar arquivo
+fi                                                         fechamento de if
+__
+#!/bin/bash # Interpretador shell
+var=$(cat /etc/passwd | grep $1)                           listar o cat/etc/psswd e procurar o vetor 1
+if [ -z $var ] # -z  se a variavel estiver vazia           se a váriavel estiver vazia 
+then                                                       então
+        echo "O usuário n existe no sistema"               escrita
+else                                                       ou então
+        echo "O usuário já está cadastrado"                escrita
+fi                                                         fechamento do if
+__
+#!/bin/bash # Interpretador shell
+if [ -z $1 ]                                               se a váriavel estiver vazia
+then                                                       então
+    echo "Erro, arquivo faltando"                          escrita de arquivo faltando
+else                                                       ou então
+    cat $1 | grep -i "incerteza" # opção -i ignora a diferença entre maiúsculo e minúsculo                  procura se há escrita 
+fi                                                         fechamento de if
